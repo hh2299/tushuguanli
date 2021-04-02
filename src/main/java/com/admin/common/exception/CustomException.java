@@ -9,8 +9,10 @@ public class CustomException extends RuntimeException
 {
     private static final long serialVersionUID = 1L;
 
+    //错误码
     private Integer code;
 
+    //错误信息
     private String message;
 
     public CustomException(String message)
