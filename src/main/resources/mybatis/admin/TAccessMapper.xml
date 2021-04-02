@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.admin.project.admin.mapper.TAccessMapper">
+    
+    <resultMap type="TAccess" id="TAccessResult">
+        <result property="id"    column="id"    />
+        <result property="bookId"    column="book_id"    />
+        <result property="price"    column="price"    />
+        <result property="status"    column="status"    />
+        <result property="backTime"    column="back_time"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+         <result property="book.name"    column="name"    />
+        <result property="book.author"    column="author"    />
+        <result property="book.isbn"    column="isbn"    />
+        <result property="book.type"    column="type"    />
+    </resultMap>
+
+    <sql id="selectTAccessVo">
+        select x.id, x.book_id, x.price, x.status, x.back_time, x.create_by, x.create_time,
+        b.name, b.author, b.isbn, b.type
+         from t_access x
+         inner join t_book b on b.id = x.book_id
+    </sql>
+
+    <select id="selectTAccessList" parameterType="TAccess" resultMap="TAccessResult">
+        <include refid="selectTAccessVo"/>
+        <where>  
+        	<if test="book!=null and book.name != null  and  book.name != ''"> and  b.name like concat('%', #{ book.name}, '%')</if>
+            <if test="book!=null and  book.author != null  and  book.author != ''"> and author = #{ book.author}</if>
+            <if test="book!=null and  book.isbn != null  and  book.isbn != ''"> and b.isbn = #{ book.isbn}</if>
+            <if test="book!=null and  book.type != null  and  book.type != ''"> and b.type = #{ book.type}</if>
+            <if test="bookId != null "> and x.book_id = #{bookId}</if>
+            <if test="price != null "> and x.price = #{price}</if>
+            <if test="status != null  and status != ''"> and x.status = #{status}</if>
+            <if test="backTime != null "> and x.back_time = #{backTime}</if>
+            <if test="createBy != null  and createBy != ''"> and x.create_by = #{createBy}</if>
+            <if test="params.beginCreateTime != null and params.beginCreateTime != '' and params.endCreateTime != null and params.endCreateTime != ''"> and x.create_time between #{params.beginCreateTime} and #{params.endCreateTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectTAccessById" parameterType="Long" resultMap="TAccessResult">
+        <include refid="selectTAccessVo"/>
+        where x.id = #{id}
+    </select>
+        
+    <insert id="insertTAccess" parameterType="TAccess" useGeneratedKeys="true" keyProperty="id">
+        insert into t_access
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bookId != null">book_id,</if>
+            <if test="price != null">price,</if>
+            <if test="status != null">status,</if>
+            <if test="backTime != null">back_time,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="bookId != null">#{bookId},</if>
+            <if test="price != null">#{price},</if>
+            <if test="status != null">#{status},</if>
+            <if test="backTime != null">#{backTime},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTAccess" parameterType="TAccess">
+        update t_access
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="bookId != null">book_id = #{bookId},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="backTime != null">back_time = #{backTime},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTAccessById" parameterType="Long">
+        delete from t_access where id = #{id}
+    </delete>
+
+    <delete id="deleteTAccessByIds" parameterType="String">
+        delete from t_access where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

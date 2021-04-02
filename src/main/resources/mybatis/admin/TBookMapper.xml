@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.admin.project.admin.mapper.TBookMapper">
+    
+    <resultMap type="TBook" id="TBookResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="author"    column="author"    />
+        <result property="isbn"    column="isbn"    />
+        <result property="type"    column="type"    />
+        <result property="totle"    column="totle"    />
+    </resultMap>
+
+    <sql id="selectTBookVo">
+        select id, name, author, isbn, type, totle from t_book
+    </sql>
+
+    <select id="selectTBookList" parameterType="TBook" resultMap="TBookResult">
+        <include refid="selectTBookVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="author != null  and author != ''"> and author = #{author}</if>
+            <if test="isbn != null  and isbn != ''"> and isbn = #{isbn}</if>
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="totle != null  and totle != ''"> and totle = #{totle}</if>
+        </where>
+    </select>
+    
+    <select id="selectTBookById" parameterType="Long" resultMap="TBookResult">
+        <include refid="selectTBookVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertTBook" parameterType="TBook" useGeneratedKeys="true" keyProperty="id">
+        insert into t_book
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="author != null">author,</if>
+            <if test="isbn != null">isbn,</if>
+            <if test="type != null">type,</if>
+            <if test="totle != null">totle,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="author != null">#{author},</if>
+            <if test="isbn != null">#{isbn},</if>
+            <if test="type != null">#{type},</if>
+            <if test="totle != null">#{totle},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTBook" parameterType="TBook">
+        update t_book
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="author != null">author = #{author},</if>
+            <if test="isbn != null">isbn = #{isbn},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="totle != null">totle = #{totle},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTBookById" parameterType="Long">
+        delete from t_book where id = #{id}
+    </delete>
+
+    <delete id="deleteTBookByIds" parameterType="String">
+        delete from t_book where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>
