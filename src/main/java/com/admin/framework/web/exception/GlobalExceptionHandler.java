@@ -50,6 +50,11 @@ public class GlobalExceptionHandler
         return AjaxResult.error(e.getCode(), e.getMessage());
     }
 
+    /**
+     * 路径异常
+     * @param e
+     * @return
+     */
     @ExceptionHandler(NoHandlerFoundException.class)
     public AjaxResult handlerNoFoundException(Exception e)
     {
@@ -57,6 +62,11 @@ public class GlobalExceptionHandler
         return AjaxResult.error(HttpStatus.NOT_FOUND, "路径不存在，请检查路径是否正确");
     }
 
+    /**
+     * 权限异常
+     * @param e
+     * @return
+     */
     @ExceptionHandler(AccessDeniedException.class)
     public AjaxResult handleAuthorizationException(AccessDeniedException e)
     {
@@ -64,6 +74,11 @@ public class GlobalExceptionHandler
         return AjaxResult.error(HttpStatus.FORBIDDEN, "没有权限，请联系管理员授权");
     }
 
+    /**
+     * 账户异常
+     * @param e
+     * @return
+     */
     @ExceptionHandler(AccountExpiredException.class)
     public AjaxResult handleAccountExpiredException(AccountExpiredException e)
     {
@@ -71,6 +86,11 @@ public class GlobalExceptionHandler
         return AjaxResult.error(e.getMessage());
     }
 
+    /**
+     * 查无此人
+     * @param e
+     * @return
+     */
     @ExceptionHandler(UsernameNotFoundException.class)
     public AjaxResult handleUsernameNotFoundException(UsernameNotFoundException e)
     {
@@ -78,6 +98,11 @@ public class GlobalExceptionHandler
         return AjaxResult.error(e.getMessage());
     }
 
+    /**
+     * 任意地异常
+     * @param e
+     * @return
+     */
     @ExceptionHandler(Exception.class)
     public AjaxResult handleException(Exception e)
     {
