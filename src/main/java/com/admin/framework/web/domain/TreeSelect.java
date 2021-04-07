@@ -9,8 +9,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * Treeselect树结构实体类
- * 
- * @author 
  */
 public class TreeSelect implements Serializable
 {

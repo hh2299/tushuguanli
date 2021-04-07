@@ -20,8 +20,6 @@ import com.admin.framework.web.domain.AjaxResult;
 
 /**
  * 全局异常处理器
- * 
- * @author 
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler

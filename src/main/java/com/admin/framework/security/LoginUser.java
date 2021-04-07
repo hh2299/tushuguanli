@@ -10,8 +10,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * 登录用户身份权限
- * 
- * @author ruoyi
  */
 public class LoginUser implements UserDetails
 {

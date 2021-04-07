@@ -4,8 +4,6 @@ import com.admin.common.utils.ServletUtils;
 
 /**
  * 表格数据处理
- * 
- * @author 
  */
 public class TableSupport
 {

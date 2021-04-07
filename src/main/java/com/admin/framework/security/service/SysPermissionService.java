@@ -10,8 +10,6 @@ import com.admin.project.system.service.ISysRoleService;
 
 /**
  * 用户权限处理
- * 
- * @author ruoyi
  */
 @Component
 public class SysPermissionService

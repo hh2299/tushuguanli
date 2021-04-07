@@ -14,8 +14,6 @@ import com.alibaba.fastjson.JSONObject;
 
 /**
  * 防止重复提交拦截器
- * 
- * @author ruoyi
  */
 @Component
 public abstract class RepeatSubmitInterceptor extends HandlerInterceptorAdapter

@@ -11,9 +11,6 @@ import com.admin.framework.aspectj.lang.enums.OperatorType;
 
 /**
  * 自定义操作日志记录注解
- * 
- * @author ruoyi
- *
  */
 @Target({ ElementType.PARAMETER, ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)

@@ -21,8 +21,6 @@ import com.github.pagehelper.PageInfo;
 
 /**
  * web层通用数据处理
- * 
- * @author 
  */
 public class BaseController
 {

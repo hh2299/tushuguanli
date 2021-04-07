@@ -18,7 +18,7 @@ public class CommonLocalCache implements LocalCache {
 	 * 缓存值
 	 * 
 	 * @author:
-	 * @date: 2018年2月6日 下午5:24:20
+	 * @date: 2021年3月6日 下午5:24:20
 	 * @param key
 	 * @param value
 	 */
@@ -37,7 +37,7 @@ public class CommonLocalCache implements LocalCache {
 	 * 缓存值-指定缓存时间
 	 * 
 	 * @author:
-	 * @date: 2018年2月6日 下午5:35:05
+	 * @date: 2021年3月6日 下午5:35:05
 	 * @param key
 	 * @param value
 	 * @param cacheTime 缓存时间
@@ -52,7 +52,7 @@ public class CommonLocalCache implements LocalCache {
 	 * 获取值
 	 * 
 	 * @author:
-	 * @date: 2018年2月6日 下午5:34:28
+	 * @date: 2021年3月6日 下午5:34:28
 	 * @param key
 	 * @return
 	 */

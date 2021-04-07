@@ -35,6 +35,11 @@ public class SysDictDataController extends BaseController
     @Autowired
     private ISysDictDataService dictDataService;
 
+    /**
+     * 获取数据字典列表
+     * @param dictData
+     * @return
+     */
     @PreAuthorize("@ss.hasPermi('system:dict:list')")
     @GetMapping("/list")
     public TableDataInfo list(SysDictData dictData)

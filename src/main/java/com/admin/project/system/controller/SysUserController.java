@@ -136,8 +136,13 @@ public class SysUserController extends BaseController
         user.setPassword(SecurityUtils.encryptPassword(user.getPassword()));
         return toAjax(userService.insertUser(user));
     }
-    
 
+
+    /**
+     * 注册用户
+     * @param user
+     * @return
+     */
     @PostMapping("/reg")
     public AjaxResult reg(@Validated @RequestBody SysUser user)
     {

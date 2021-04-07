@@ -7,8 +7,6 @@ import com.admin.common.utils.StringUtils;
 
 /**
  * 操作消息提醒
- * 
- * @author 
  */
 public class AjaxResult extends HashMap<String, Object>
 {

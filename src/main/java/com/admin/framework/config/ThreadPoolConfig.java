@@ -12,8 +12,6 @@ import com.admin.common.utils.Threads;
 
 /**
  * 线程池配置
- *
- * @author ruoyi
  **/
 @Configuration
 public class ThreadPoolConfig

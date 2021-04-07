@@ -35,6 +35,11 @@ public class MyBatisConfig
 
     static final String DEFAULT_RESOURCE_PATTERN = "**/*.class";
 
+    /**
+     * 别名
+     * @param typeAliasesPackage
+     * @return
+     */
     public static String setTypeAliasesPackage(String typeAliasesPackage)
     {
         ResourcePatternResolver resolver = (ResourcePatternResolver) new PathMatchingResourcePatternResolver();

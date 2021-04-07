@@ -4,8 +4,6 @@ import com.admin.common.utils.StringUtils;
 
 /**
  * 分页数据
- * 
- * @author 
  */
 public class PageDomain
 {
